@@ -1,5 +1,7 @@
 #include<stdio.h>
 #include <stdlib.h>
+#include <time.h>
+
 
 int plusMoins (int choix, int valeurAtrouver)
 {
@@ -12,18 +14,68 @@ int plusMoins (int choix, int valeurAtrouver)
         printf ("Bingo  \n");
 }
 
+int Levels(choix,valeurAtrouver)
+{
+    
+}
 int main ()
 {
+    int i;
+    int facile = 0;
+    int moyen = 1 ;
+    int difficile= 10 ; 
+    int level;
     int choix;
     srand (time (0));
-    int valeurAtrouver = rand () % 100;
-    printf ("Choisissez un nombre entre 0 et 100 : ");
-    scanf ("%d", &choix);
-    plusMoins ( choix,  valeurAtrouver);
-    while (choix != valeurAtrouver)
+    int valeurAtrouver = rand() % 100;
+    printf ("Choix de niveau. Tapez 0 pour facile, 1 pour moyen et 10 pour difficile : ");
+     scanf ("%d", &level);
+     
+    if (level == facile)
+    {
+        printf ("Choisissez un nombre :");
+        scanf ("%d", &choix);
+        plusMoins ( choix,  valeurAtrouver);
+        while (choix != valeurAtrouver)
         {
-            printf ("Choisissez un autre nombre : ");
+            printf ("Choisissez un autre nombre :");
             scanf ("%d", &choix);
             plusMoins ( choix, valeurAtrouver);
         }
+    }
+    
+    else if (level == moyen)
+    {
+        printf ("Choisissez un nombre :");
+        scanf ("%d", &choix);
+        plusMoins ( choix,  valeurAtrouver);
+        while (choix != valeurAtrouver)
+        {
+            for (i=0; i<25; i++)
+                {
+                    printf ("Choisissez un autre nombre :");
+                    scanf ("%d", &choix);
+                    plusMoins ( choix, valeurAtrouver);
+                }
+        }
+    }
+    
+    else if (level == difficile )
+    {
+        printf ("Choisissez un nombre :");
+        scanf ("%d", &choix);
+        plusMoins ( choix,  valeurAtrouver);
+        while (choix != valeurAtrouver)
+        {
+            for (i=0; i<10; i++)
+                {
+                    printf ("Choisissez un autre nombre :");
+                    scanf ("%d", &choix);
+                    plusMoins ( choix, valeurAtrouver);
+                }
+        }
+    }
+    
+    else 
+        printf ("0, 1 ou 10 on a dit");
 }
